@@ -7,8 +7,10 @@
 
   <p *ngIf="product.description">Descr : {{ product.description }}</p>
   <p *ngIf="product.instock">In Stock</p>
-  <p *ngIf="!product.instock">Currently Out of Stock</p>
-
+  <p *ngIf="!product.instock && !product.onsale">Currently Out of Stock</p>
+  <p *ngIf="product.onsale && !product.instock">
+    Currently Out of Stock But Available for advance booking
+  </p>
   <button *ngIf="product.onsale == true && product.instock" (click)="buy()">
     Buy
   </button>
