@@ -1,0 +1,17 @@
+<h2>My Products</h2>
+
+<div *ngFor="let product of products">
+  <h3>
+    <a [title]="product.name + ' details'">{{ product.name }} </a>
+  </h3>
+
+  <p *ngIf="product.description">Descr : {{ product.description }}</p>
+  <p *ngIf="product.instock">In Stock</p>
+  <p *ngIf="!product.instock">Currently Out of Stock</p>
+
+  <button *ngIf="product.onsale == true && product.instock" (click)="buy()">
+    Buy
+  </button>
+  <app-product-alerts [product]="product" (notify)="onNotify()">
+  </app-product-alerts>
+</div>
